@@ -1,7 +1,7 @@
 import { IRevenueRepository } from "../repository/IRevenueRepository";
 
 export interface IGetRevenueByIdAction {
-  execute: (id: string) => Promise<any>;
+  execute: (id: string) => Promise<unknown>;
 }
 
 export const GetRevenueByIdAction = (

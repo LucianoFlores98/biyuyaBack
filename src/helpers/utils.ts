@@ -3,7 +3,7 @@ const fs = require("fs");
 export const createHashMap = (
   objectToMap: { [key: string]: any },
   defaultValue?: any
-) => {
+): { [key: string]: any } => {
   const handler = {
     get: function (target: { [key: string]: any }, name: string) {
       return target.hasOwnProperty(name) ? target[name] : defaultValue;

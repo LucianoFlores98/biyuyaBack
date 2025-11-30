@@ -1,7 +1,7 @@
 import { IPaymentMethodRepository } from "../repository/IPaymentMethodRepository";
 
 export interface IGetPaymentMethodByIdAction {
-  execute: (id: string) => Promise<any>;
+  execute: (id: string) => Promise<unknown>;
 }
 
 export const GetPaymentMethodByIdAction = (

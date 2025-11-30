@@ -40,7 +40,7 @@ export const CardRepository = (): ICardRepository => ({
   async getOne(query) {
     const cardFounded = await CardModel.findOne({
       where: {
-        ...query,
+        ...(query as any),
       },
     });
     return cardFounded?.dataValues;

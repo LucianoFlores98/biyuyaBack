@@ -3,7 +3,7 @@ import { IncreaseRateNotExistException } from "../exceptions/IncreaseRateNotExis
 import { IIncreaseRateRepository } from "../repository/IIncreaseRateRepository";
 
 export interface IEditIncreaseRateAction {
-  execute: (body: IIncreaseRate, id: string) => Promise<any>;
+  execute: (body: IIncreaseRate, id: string) => Promise<unknown>;
 }
 
 export const EditIncreaseRateAction = (

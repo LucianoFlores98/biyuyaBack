@@ -40,7 +40,7 @@ export const IncreaseRateRepository = (): IIncreaseRateRepository => ({
   async getOne(query) {
     const increaseRateFounded = await IncreaseRateModel.findOne({
       where: {
-        ...query,
+        ...(query as any),
       },
     });
     return increaseRateFounded?.dataValues;

@@ -1,7 +1,7 @@
 import { UserNotExistException } from "../exceptions/UserNotExistException";
 import { IUserRepository } from "../repository/IUserRepository";
 export interface IGetUserByIdAction {
-  execute: (id: string) => Promise<any>;
+  execute: (id: string) => Promise<unknown>;
 }
 export const GetUserByIdAction = (
   UserRepository: IUserRepository

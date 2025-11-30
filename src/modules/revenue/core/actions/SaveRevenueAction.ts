@@ -2,7 +2,7 @@ import IRevenue from "../entities/IRevenue";
 import { IRevenueRepository } from "../repository/IRevenueRepository";
 
 export interface ISaveRevenueAction {
-  execute: (body: IRevenue) => Promise<any>;
+  execute: (body: IRevenue) => Promise<unknown>;
 }
 
 export const SaveRevenueAction = (

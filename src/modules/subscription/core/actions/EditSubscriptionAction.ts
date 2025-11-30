@@ -3,7 +3,7 @@ import { SubscriptionNotExistException } from "../exceptions/SubscriptionNotExis
 import { ISubscriptionRepository } from "../repository/ISubscriptionRepository";
 
 export interface IEditSubscriptionAction {
-  execute: (body: ISubscription, id: string) => Promise<any>;
+  execute: (body: ISubscription, id: string) => Promise<unknown>;
 }
 
 export const EditSubscriptionAction = (

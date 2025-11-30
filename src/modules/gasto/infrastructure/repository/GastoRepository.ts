@@ -40,7 +40,7 @@ export const GastoRepository = (): IGastoRepository => ({
   async getOne(query) {
     const gastoFounded = await GastoModel.findOne({
       where: {
-        ...query,
+        ...(query as any),
       },
     });
     return gastoFounded?.dataValues;

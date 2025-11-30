@@ -2,7 +2,7 @@ import { IGastoRepository } from "../repository/IGastoRepository";
 import { GastoNotExistException } from "../exceptions/GastoNotExistException";
 
 export interface IRemoveGastoAction {
-  execute: (id: string) => Promise<any>;
+  execute: (id: string) => Promise<unknown>;
 }
 
 export const RemoveGastoAction = (

@@ -3,7 +3,7 @@ import { RevenueNotExistException } from "../exceptions/RevenueNotExistException
 import { IRevenueRepository } from "../repository/IRevenueRepository";
 
 export interface IEditRevenueAction {
-  execute: (body: IRevenue, id: string) => Promise<any>;
+  execute: (body: IRevenue, id: string) => Promise<unknown>;
 }
 
 export const EditRevenueAction = (

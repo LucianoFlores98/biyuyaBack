@@ -1,10 +1,10 @@
 import ICard from "../entities/ICard";
 
 export interface ICardRepository {
-  save: (card: ICard) => Promise<any>;
-  edit: (card: ICard, id: string) => Promise<any>;
-  remove: (id: string) => Promise<any>;
-  getAll: (query: any) => Promise<any>;
-  getOne: (query: any) => Promise<any>;
-  getById: (id: string) => Promise<any>;
+  save: (card: ICard) => Promise<unknown>;
+  edit: (card: ICard, id: string) => Promise<unknown>;
+  remove: (id: string) => Promise<unknown>;
+  getAll: (query: unknown) => Promise<unknown>;
+  getOne: (query: unknown) => Promise<unknown>;
+  getById: (id: string) => Promise<unknown>;
 }

@@ -2,7 +2,7 @@ import { IAccountRepository } from "../repository/IAccountRepository";
 import { AccountNotExistException } from "../exceptions/AccountNotExistException";
 
 export interface IRemoveAccountAction {
-  execute: (id: string) => Promise<any>;
+  execute: (id: string) => Promise<unknown>;
 }
 
 export const RemoveAccountAction = (

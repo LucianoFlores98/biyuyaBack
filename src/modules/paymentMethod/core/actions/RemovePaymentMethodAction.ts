@@ -2,7 +2,7 @@ import { IPaymentMethodRepository } from "../repository/IPaymentMethodRepository
 import { PaymentMethodNotExistException } from "../exceptions/PaymentMethodNotExistException";
 
 export interface IRemovePaymentMethodAction {
-  execute: (id: string) => Promise<any>;
+  execute: (id: string) => Promise<unknown>;
 }
 
 export const RemovePaymentMethodAction = (

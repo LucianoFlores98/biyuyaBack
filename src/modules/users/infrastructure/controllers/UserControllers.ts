@@ -19,7 +19,7 @@ export const UserControllers = ({
   login,
 }: IUserActions) => {
   //mapeo de errores
-  const errorResponses = createHashMap(
+  const errorResponses: Record<string, (res: Response, error: Error) => void> = createHashMap(
     {
       [UserNotExistException.name]: (res: Response, error: Error) =>
         ErrorResponse(res, error, 404),

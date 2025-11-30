@@ -3,7 +3,7 @@ import { WalletNotExistException } from "../exceptions/WalletNotExistException";
 import { IWalletRepository } from "../repository/IWalletRepository";
 
 export interface IEditWalletAction {
-  execute: (body: IWallet, id: string) => Promise<any>;
+  execute: (body: IWallet, id: string) => Promise<unknown>;
 }
 
 export const EditWalletAction = (

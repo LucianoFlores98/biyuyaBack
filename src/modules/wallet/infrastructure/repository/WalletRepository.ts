@@ -40,7 +40,7 @@ export const WalletRepository = (): IWalletRepository => ({
   async getOne(query) {
     const walletFounded = await WalletModel.findOne({
       where: {
-        ...query,
+        ...(query as any),
       },
     });
     return walletFounded?.dataValues;

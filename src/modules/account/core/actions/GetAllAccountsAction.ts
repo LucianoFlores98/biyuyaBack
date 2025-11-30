@@ -1,7 +1,7 @@
 import { IAccountRepository } from "../repository/IAccountRepository";
 
 export interface IGetAllAccountsAction {
-  execute: (query: any) => Promise<any>;
+  execute: (query: unknown) => Promise<unknown>;
 }
 
 export const GetAllAccountsAction = (

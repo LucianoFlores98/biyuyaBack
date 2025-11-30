@@ -2,7 +2,7 @@ import { IIncreaseRateRepository } from "../repository/IIncreaseRateRepository";
 import { IncreaseRateNotExistException } from "../exceptions/IncreaseRateNotExistException";
 
 export interface IRemoveIncreaseRateAction {
-  execute: (id: string) => Promise<any>;
+  execute: (id: string) => Promise<unknown>;
 }
 
 export const RemoveIncreaseRateAction = (

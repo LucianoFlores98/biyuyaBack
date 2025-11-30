@@ -1,7 +1,8 @@
 import { ICardRepository } from "../repository/ICardRepository";
+import ICard from "../entities/ICard";
 
 export interface IGetAllCardsAction {
-  execute: (query: any) => Promise<any>;
+  execute: (query: unknown) => Promise<unknown>;
 }
 
 export const GetAllCardsAction = (

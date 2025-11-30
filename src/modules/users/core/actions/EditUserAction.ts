@@ -4,7 +4,7 @@ import { IUserRepository } from "../repository/IUserRepository";
 import { IHashService } from "../services/IHashService";
 
 export interface IEditUserAction {
-  execute: (body: IUser, id: string) => Promise<any>;
+  execute: (body: IUser, id: string) => Promise<unknown>;
 }
 export const EditUserAction = (
   UserRepository: IUserRepository,

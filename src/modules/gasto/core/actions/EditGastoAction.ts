@@ -3,7 +3,7 @@ import { GastoNotExistException } from "../exceptions/GastoNotExistException";
 import { IGastoRepository } from "../repository/IGastoRepository";
 
 export interface IEditGastoAction {
-  execute: (body: IGasto, id: string) => Promise<any>;
+  execute: (body: IGasto, id: string) => Promise<unknown>;
 }
 
 export const EditGastoAction = (

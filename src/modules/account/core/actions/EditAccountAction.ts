@@ -3,7 +3,7 @@ import { AccountNotExistException } from "../exceptions/AccountNotExistException
 import { IAccountRepository } from "../repository/IAccountRepository";
 
 export interface IEditAccountAction {
-  execute: (body: IAccount, id: string) => Promise<any>;
+  execute: (body: IAccount, id: string) => Promise<unknown>;
 }
 
 export const EditAccountAction = (

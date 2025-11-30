@@ -1,7 +1,7 @@
 import { ICardRepository } from "../repository/ICardRepository";
 
 export interface IGetOneCardAction {
-  execute: (query: any) => Promise<any>;
+  execute: (query: unknown) => Promise<unknown>;
 }
 
 export const GetOneCardAction = (

@@ -2,7 +2,7 @@ import IPaymentMethod from "../entities/IPaymentMethod";
 import { IPaymentMethodRepository } from "../repository/IPaymentMethodRepository";
 
 export interface ISavePaymentMethodAction {
-  execute: (body: IPaymentMethod) => Promise<any>;
+  execute: (body: IPaymentMethod) => Promise<unknown>;
 }
 
 export const SavePaymentMethodAction = (

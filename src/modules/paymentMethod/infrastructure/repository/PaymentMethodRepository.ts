@@ -40,7 +40,7 @@ export const PaymentMethodRepository = (): IPaymentMethodRepository => ({
   async getOne(query) {
     const paymentMethodFounded = await PaymentMethodModel.findOne({
       where: {
-        ...query,
+        ...(query as any),
       },
     });
     return paymentMethodFounded?.dataValues;

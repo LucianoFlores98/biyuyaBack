@@ -1,6 +1,6 @@
 import { IUserRepository } from "../repository/IUserRepository";
 export interface IGetAllUsersAction {
-  execute: (query: any) => Promise<any>;
+  execute: (query: unknown) => Promise<unknown>;
 }
 export const GetAllUsersAction = (
   UserRepository: IUserRepository

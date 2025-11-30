@@ -1,7 +1,7 @@
 import { IPaymentMethodRepository } from "../repository/IPaymentMethodRepository";
 
 export interface IGetOnePaymentMethodAction {
-  execute: (query: any) => Promise<any>;
+  execute: (query: unknown) => Promise<unknown>;
 }
 
 export const GetOnePaymentMethodAction = (

@@ -2,7 +2,7 @@ import { IWalletRepository } from "../repository/IWalletRepository";
 import { WalletNotExistException } from "../exceptions/WalletNotExistException";
 
 export interface IRemoveWalletAction {
-  execute: (id: string) => Promise<any>;
+  execute: (id: string) => Promise<unknown>;
 }
 
 export const RemoveWalletAction = (

@@ -40,7 +40,7 @@ export const SubscriptionRepository = (): ISubscriptionRepository => ({
   async getOne(query) {
     const subscriptionFounded = await SubscriptionModel.findOne({
       where: {
-        ...query,
+        ...(query as any),
       },
     });
     return subscriptionFounded?.dataValues;

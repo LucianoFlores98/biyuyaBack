@@ -40,7 +40,7 @@ export const RevenueRepository = (): IRevenueRepository => ({
   async getOne(query) {
     const revenueFounded = await RevenueModel.findOne({
       where: {
-        ...query,
+        ...(query as any),
       },
     });
     return revenueFounded?.dataValues;

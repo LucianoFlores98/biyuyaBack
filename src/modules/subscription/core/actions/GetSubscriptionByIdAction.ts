@@ -1,7 +1,7 @@
 import { ISubscriptionRepository } from "../repository/ISubscriptionRepository";
 
 export interface IGetSubscriptionByIdAction {
-  execute: (id: string) => Promise<any>;
+  execute: (id: string) => Promise<unknown>;
 }
 
 export const GetSubscriptionByIdAction = (

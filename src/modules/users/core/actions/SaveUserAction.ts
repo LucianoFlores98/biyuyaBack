@@ -3,7 +3,7 @@ import { IUserRepository } from "../repository/IUserRepository";
 import { IHashService } from "../services/IHashService";
 
 export interface ISaveUserAction {
-  execute: (body: IUser) => Promise<any>;
+  execute: (body: IUser) => Promise<unknown>;
 }
 
 export const SaveUserAction = (

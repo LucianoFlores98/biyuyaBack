@@ -1,7 +1,7 @@
 import { IIncreaseRateRepository } from "../repository/IIncreaseRateRepository";
 
 export interface IGetIncreaseRateByIdAction {
-  execute: (id: string) => Promise<any>;
+  execute: (id: string) => Promise<unknown>;
 }
 
 export const GetIncreaseRateByIdAction = (

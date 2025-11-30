@@ -2,7 +2,7 @@ import IIncreaseRate from "../entities/IIncreaseRate";
 import { IIncreaseRateRepository } from "../repository/IIncreaseRateRepository";
 
 export interface ISaveIncreaseRateAction {
-  execute: (body: IIncreaseRate) => Promise<any>;
+  execute: (body: IIncreaseRate) => Promise<unknown>;
 }
 
 export const SaveIncreaseRateAction = (

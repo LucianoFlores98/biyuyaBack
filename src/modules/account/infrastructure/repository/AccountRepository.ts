@@ -1,4 +1,5 @@
 import { IAccountRepository } from "../../core/repository/IAccountRepository";
+import IAccount from "../../core/entities/IAccount";
 import AccountModel from "../models/AccountModel";
 
 export const AccountRepository = (): IAccountRepository => ({
@@ -8,10 +9,10 @@ export const AccountRepository = (): IAccountRepository => ({
       createdAt: new Date(),
       updatedAt: new Date(),
     });
-    return accountCreated;
+    return accountCreated.dataValues as IAccount;
   },
   async edit(account, id) {
-    return await AccountModel.update(
+    await AccountModel.update(
       { ...account },
       {
         where: {
@@ -19,30 +20,40 @@ export const AccountRepository = (): IAccountRepository => ({
         },
       }
     );
+    const updatedAccount = await AccountModel.findOne({
+      where: { id },
+    });
+    return updatedAccount?.dataValues as IAccount;
   },
   async remove(id) {
-    return await AccountModel.destroy({
+    const accountToDelete = await AccountModel.findOne({
+      where: { id },
+    });
+    await AccountModel.destroy({
       where: {
         id: id,
       },
     });
+    return accountToDelete?.dataValues as IAccount;
   },
   async getAll(query) {
-    return await AccountModel.findAll();
+    const accounts = await AccountModel.findAll();
+    return accounts.map(a => a.dataValues as IAccount);
   },
   async getById(id) {
-    return await AccountModel.findOne({
+    const account = await AccountModel.findOne({
       where: {
         id: id,
       },
     });
+    return account ? (account.dataValues as IAccount) : null;
   },
   async getOne(query) {
     const accountFounded = await AccountModel.findOne({
       where: {
-        ...query,
+        ...(query as any),
       },
     });
-    return accountFounded?.dataValues;
+    return accountFounded ? (accountFounded.dataValues as IAccount) : null;
   },
 });

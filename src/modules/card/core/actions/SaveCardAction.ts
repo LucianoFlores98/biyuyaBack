@@ -2,7 +2,7 @@ import ICard from "../entities/ICard";
 import { ICardRepository } from "../repository/ICardRepository";
 
 export interface ISaveCardAction {
-  execute: (body: ICard) => Promise<any>;
+  execute: (body: ICard) => Promise<unknown>;
 }
 
 export const SaveCardAction = (

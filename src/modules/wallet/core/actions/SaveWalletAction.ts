@@ -2,7 +2,7 @@ import IWallet from "../entities/IWallet";
 import { IWalletRepository } from "../repository/IWalletRepository";
 
 export interface ISaveWalletAction {
-  execute: (body: IWallet) => Promise<any>;
+  execute: (body: IWallet) => Promise<unknown>;
 }
 
 export const SaveWalletAction = (

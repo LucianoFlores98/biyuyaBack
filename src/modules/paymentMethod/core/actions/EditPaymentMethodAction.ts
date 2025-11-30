@@ -3,7 +3,7 @@ import { PaymentMethodNotExistException } from "../exceptions/PaymentMethodNotEx
 import { IPaymentMethodRepository } from "../repository/IPaymentMethodRepository";
 
 export interface IEditPaymentMethodAction {
-  execute: (body: IPaymentMethod, id: string) => Promise<any>;
+  execute: (body: IPaymentMethod, id: string) => Promise<unknown>;
 }
 
 export const EditPaymentMethodAction = (

@@ -3,7 +3,7 @@ import { CardNotExistException } from "../exceptions/CardNotExistException";
 import { ICardRepository } from "../repository/ICardRepository";
 
 export interface IEditCardAction {
-  execute: (body: ICard, id: string) => Promise<any>;
+  execute: (body: ICard, id: string) => Promise<unknown>;
 }
 
 export const EditCardAction = (

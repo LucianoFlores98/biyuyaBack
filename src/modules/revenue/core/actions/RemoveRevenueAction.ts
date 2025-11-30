@@ -2,7 +2,7 @@ import { IRevenueRepository } from "../repository/IRevenueRepository";
 import { RevenueNotExistException } from "../exceptions/RevenueNotExistException";
 
 export interface IRemoveRevenueAction {
-  execute: (id: string) => Promise<any>;
+  execute: (id: string) => Promise<unknown>;
 }
 
 export const RemoveRevenueAction = (

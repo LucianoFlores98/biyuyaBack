@@ -1,7 +1,7 @@
 import { IWalletRepository } from "../repository/IWalletRepository";
 
 export interface IGetAllWalletsAction {
-  execute: (query: any) => Promise<any>;
+  execute: (query: unknown) => Promise<unknown>;
 }
 
 export const GetAllWalletsAction = (

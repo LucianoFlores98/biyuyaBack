@@ -1,7 +1,7 @@
 import { IGastoRepository } from "../repository/IGastoRepository";
 
 export interface IGetGastoByIdAction {
-  execute: (id: string) => Promise<any>;
+  execute: (id: string) => Promise<unknown>;
 }
 
 export const GetGastoByIdAction = (

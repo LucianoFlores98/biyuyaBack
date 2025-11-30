@@ -2,7 +2,7 @@ import { ICardRepository } from "../repository/ICardRepository";
 import { CardNotExistException } from "../exceptions/CardNotExistException";
 
 export interface IRemoveCardAction {
-  execute: (id: string) => Promise<any>;
+  execute: (id: string) => Promise<unknown>;
 }
 
 export const RemoveCardAction = (

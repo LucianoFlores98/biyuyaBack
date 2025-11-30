@@ -2,7 +2,7 @@ import { IUserRepository } from "../repository/IUserRepository";
 import { UserNotExistException } from "../exceptions/UserNotExistException";
 
 export interface IRemoveUserAction {
-  execute: (id: string) => Promise<any>;
+  execute: (id: string) => Promise<unknown>;
 }
 
 export const RemoveUserAction = (

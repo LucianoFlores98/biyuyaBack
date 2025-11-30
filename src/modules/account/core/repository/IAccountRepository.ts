@@ -1,10 +1,10 @@
 import IAccount from "../entities/IAccount";
 
 export interface IAccountRepository {
-  save: (account: IAccount) => Promise<any>;
-  edit: (account: IAccount, id: string) => Promise<any>;
-  remove: (id: string) => Promise<any>;
-  getAll: (query: any) => Promise<any>;
-  getOne: (query: any) => Promise<any>;
-  getById: (id: string) => Promise<any>;
+  save: (account: IAccount) => Promise<IAccount>;
+  edit: (account: IAccount, id: string) => Promise<IAccount>;
+  remove: (id: string) => Promise<IAccount>;
+  getAll: (query: unknown) => Promise<IAccount[]>;
+  getOne: (query: unknown) => Promise<IAccount | null>;
+  getById: (id: string) => Promise<IAccount | null>;
 }

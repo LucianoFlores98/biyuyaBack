@@ -2,7 +2,7 @@ import { ISubscriptionRepository } from "../repository/ISubscriptionRepository";
 import { SubscriptionNotExistException } from "../exceptions/SubscriptionNotExistException";
 
 export interface IRemoveSubscriptionAction {
-  execute: (id: string) => Promise<any>;
+  execute: (id: string) => Promise<unknown>;
 }
 
 export const RemoveSubscriptionAction = (

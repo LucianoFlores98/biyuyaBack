@@ -2,7 +2,7 @@ import IGasto from "../entities/IGasto";
 import { IGastoRepository } from "../repository/IGastoRepository";
 
 export interface ISaveGastoAction {
-  execute: (body: IGasto) => Promise<any>;
+  execute: (body: IGasto) => Promise<unknown>;
 }
 
 export const SaveGastoAction = (

@@ -2,7 +2,7 @@ import IAccount from "../entities/IAccount";
 import { IAccountRepository } from "../repository/IAccountRepository";
 
 export interface ISaveAccountAction {
-  execute: (body: IAccount) => Promise<any>;
+  execute: (body: IAccount) => Promise<unknown>;
 }
 
 export const SaveAccountAction = (

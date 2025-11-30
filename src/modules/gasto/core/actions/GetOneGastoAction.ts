@@ -1,7 +1,7 @@
 import { IGastoRepository } from "../repository/IGastoRepository";
 
 export interface IGetOneGastoAction {
-  execute: (query: any) => Promise<any>;
+  execute: (query: unknown) => Promise<unknown>;
 }
 
 export const GetOneGastoAction = (

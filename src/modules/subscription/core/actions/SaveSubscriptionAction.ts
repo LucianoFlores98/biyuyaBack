@@ -2,7 +2,7 @@ import ISubscription from "../entities/ISubscription";
 import { ISubscriptionRepository } from "../repository/ISubscriptionRepository";
 
 export interface ISaveSubscriptionAction {
-  execute: (body: ISubscription) => Promise<any>;
+  execute: (body: ISubscription) => Promise<unknown>;
 }
 
 export const SaveSubscriptionAction = (

@@ -1,0 +1,16 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "12345678",
+    "database": "db_biyuya",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "postgres",
+    "password": "12345678",
+    "database": "db_biyuya",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}

@@ -7,7 +7,7 @@ import { IHashService } from "../services/IHashService";
 import { WrongPasswordException } from "../exceptions/WrongPasswordException";
 
 export interface ILoginUserAction {
-  execute: (credentials: IUserCredential) => Promise<any>;
+  execute: (credentials: IUserCredential) => Promise<unknown>;
 }
 
 export const LoginUserAction = (
