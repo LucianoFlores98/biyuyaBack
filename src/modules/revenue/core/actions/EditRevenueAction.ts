@@ -2,6 +2,7 @@ import IRevenue from "../entities/IRevenue";
 import { RevenueNotExistException } from "../exceptions/RevenueNotExistException";
 import { InvalidFieldException } from "../exceptions/InvalidFieldException";
 import { IRevenueRepository } from "../repository/IRevenueRepository";
+import { SalaryCalculatorService } from "../../../../helpers/SalaryCalculator";
 
 export interface IEditRevenueAction {
   execute: (body: Partial<IRevenue>, id: string) => Promise<unknown>;
@@ -12,6 +13,7 @@ export const EditRevenueAction = (
 ): IEditRevenueAction => {
   // Campos permitidos para actualización (excluyendo id, createdAt, updatedAt)
   const allowedFields = ['name', 'type', 'amount', 'period', 'increase_frequency', 'user_id'];
+  const salaryCalculator = new SalaryCalculatorService();
 
   return {
     execute(body, id) {
@@ -33,6 +35,13 @@ export const EditRevenueAction = (
           if (bodyKeys.length === 0) {
             resolve(revenue);
             return;
+          }
+
+          // Si es un salario y se está actualizando el amount, recalcular net_amount
+          const revenueData: any = revenue;
+          if ((revenueData.type === 'SALARY' || body.type === 'SALARY') && body.amount) {
+            const calculation = salaryCalculator.calculateNetSalary(body.amount);
+            body.net_amount = calculation.salarioNeto;
           }
 
           await RevenueRepository.edit(body, id);

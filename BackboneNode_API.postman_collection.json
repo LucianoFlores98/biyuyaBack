@@ -847,7 +847,7 @@
                 "revenues"
               ]
             },
-            "description": "Crea un ingreso. El campo period debe estar en formato YYYY-MM, increase_frequency representa meses (1=mensual, 3=trimestral, 6=semestral, 12=anual)"
+            "description": "Crea un ingreso. El campo period debe estar en formato YYYY-MM, increase_frequency representa meses (1=mensual, 3=trimestral, 6=semestral, 12=anual). Para type='SALARY', el net_amount se calcula automáticamente aplicando descuentos (17%: jubilación 11%, obra social 3%, PAMI 3%)"
           }
         },
         {

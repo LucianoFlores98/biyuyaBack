@@ -21,6 +21,10 @@ const RevenueModel = sequelize.define("Revenues", {
     type: DataTypes.DECIMAL(10, 2),
     allowNull: false,
   },
+  net_amount: {
+    type: DataTypes.DECIMAL(10, 2),
+    allowNull: true,
+  },
   period: {
     type: DataTypes.STRING,
     allowNull: true,
