@@ -11,6 +11,9 @@ module.exports = {
 
     // Remove frequency field
     await queryInterface.removeColumn('IncreaseRates', 'frequency');
+
+    // Remove frequency field
+    await queryInterface.removeColumn('IncreaseRates', 'date');
   },
 
   async down(queryInterface, Sequelize) {

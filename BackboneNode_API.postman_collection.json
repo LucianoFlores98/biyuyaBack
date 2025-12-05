@@ -199,7 +199,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"Inflación Mensual\",\n  \"rate\": 5.5,\n  \"date\": \"2025-01-01\",\n  \"frequency\": \"monthly\"\n}"
+              "raw": "{\n  \"name\": \"IPC Noviembre 2024\",\n  \"type\": \"IPC\",\n  \"rate\": 2.5,\n  \"date\": \"2024-11-01\",\n  \"period\": \"2024-11\"\n}"
             },
             "url": {
               "raw": "{{base_url}}/increase-rates",
@@ -209,7 +209,8 @@
               "path": [
                 "increase-rates"
               ]
-            }
+            },
+            "description": "Crea un registro de tasa de incremento. Usar type='IPC' para inflación global o type='SUBSCRIPTION' para aumentos de servicios. El campo period debe estar en formato YYYY-MM"
           }
         },
         {
@@ -257,7 +258,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"Inflación Actualizada\",\n  \"rate\": 6.0\n}"
+              "raw": "{\n  \"rate\": 3.0\n}"
             },
             "url": {
               "raw": "{{base_url}}/increase-rates/1",
@@ -286,83 +287,6 @@
                 "1"
               ]
             }
-          }
-        },
-        {
-          "name": "Register IPC",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"period\": \"2024-11\",\n  \"rate\": 2.5\n}"
-            },
-            "url": {
-              "raw": "{{base_url}}/increase-rates/ipc",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "increase-rates",
-                "ipc"
-              ]
-            },
-            "description": "Registra o actualiza datos de IPC para un período específico (formato YYYY-MM)"
-          }
-        },
-        {
-          "name": "Get IPC History",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{base_url}}/increase-rates/ipc/history?start=2024-11&end=2025-02",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "increase-rates",
-                "ipc",
-                "history"
-              ],
-              "query": [
-                {
-                  "key": "start",
-                  "value": "2024-11",
-                  "description": "Período inicial (YYYY-MM)"
-                },
-                {
-                  "key": "end",
-                  "value": "2025-02",
-                  "description": "Período final (YYYY-MM)"
-                }
-              ]
-            },
-            "description": "Obtiene el historial de IPC para un rango de fechas"
-          }
-        },
-        {
-          "name": "Get Latest IPC",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{base_url}}/increase-rates/ipc/latest",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "increase-rates",
-                "ipc",
-                "latest"
-              ]
-            },
-            "description": "Obtiene el IPC más reciente registrado"
           }
         }
       ]
@@ -912,7 +836,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"Sueldo Mensual - Empresa XYZ\",\n  \"type\": \"SALARY\",\n  \"amount\": 100000,\n  \"increase_rate\": 3,\n  \"date\": \"2024-11-01\",\n  \"user_id\": 1\n}"
+              "raw": "{\n  \"name\": \"Sueldo Mensual - Empresa XYZ\",\n  \"type\": \"SALARY\",\n  \"amount\": 100000,\n  \"period\": \"2024-11\",\n  \"increase_frequency\": 3,\n  \"user_id\": 1\n}"
             },
             "url": {
               "raw": "{{base_url}}/revenues",
@@ -923,7 +847,7 @@
                 "revenues"
               ]
             },
-            "description": "Crea un ingreso. Para salarios, usar type='SALARY' e increase_rate como frecuencia en meses (1=mensual, 3=trimestral, 6=semestral, 12=anual)"
+            "description": "Crea un ingreso. El campo period debe estar en formato YYYY-MM, increase_frequency representa meses (1=mensual, 3=trimestral, 6=semestral, 12=anual)"
           }
         },
         {
@@ -971,7 +895,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"amount\": 5500.00,\n  \"increase_rate\": 6.0\n}"
+              "raw": "{\n  \"amount\": 110000\n}"
             },
             "url": {
               "raw": "{{base_url}}/revenues/1",
@@ -1000,81 +924,6 @@
                 "1"
               ]
             }
-          }
-        },
-        {
-          "name": "Calculate Salary Increase",
-          "request": {
-            "method": "POST",
-            "header": [],
-            "url": {
-              "raw": "{{base_url}}/revenues/salary/1/calculate-increase",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "revenues",
-                "salary",
-                "1",
-                "calculate-increase"
-              ]
-            },
-            "description": "Calcula el aumento salarial basado en los datos de IPC acumulados según la frecuencia configurada"
-          }
-        },
-        {
-          "name": "Apply Salary Increase",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"newSalary\": 106152.25\n}"
-            },
-            "url": {
-              "raw": "{{base_url}}/revenues/salary/1/apply-increase",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "revenues",
-                "salary",
-                "1",
-                "apply-increase"
-              ]
-            },
-            "description": "Aplica el aumento salarial calculado, actualizando el monto y la fecha"
-          }
-        },
-        {
-          "name": "Get Pending Salary Increases",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{base_url}}/revenues/salary/pending-increases?userId=1",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "revenues",
-                "salary",
-                "pending-increases"
-              ],
-              "query": [
-                {
-                  "key": "userId",
-                  "value": "1",
-                  "description": "ID del usuario"
-                }
-              ]
-            },
-            "description": "Obtiene todos los salarios que tienen aumentos pendientes según su frecuencia configurada"
           }
         }
       ]
