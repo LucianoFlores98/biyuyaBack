@@ -1,0 +1,825 @@
+{
+  "info": {
+    "name": "BackboneNode API",
+    "description": "Colección completa de endpoints para BackboneNode - Clean Architecture",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "backbonenode"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{jwt_token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3000/api/v1",
+      "type": "string"
+    },
+    {
+      "key": "jwt_token",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.collectionVariables.set('jwt_token', jsonData.data.token);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@example.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/login",
+              "host": ["{{base_url}}"],
+              "path": ["login"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Create User",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Juan Pérez\",\n  \"email\": \"juan@example.com\",\n  \"password\": \"password123\",\n  \"role\": \"admin\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/users",
+              "host": ["{{base_url}}"],
+              "path": ["users"]
+            }
+          }
+        },
+        {
+          "name": "Get All Users",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/users",
+              "host": ["{{base_url}}"],
+              "path": ["users"]
+            }
+          }
+        },
+        {
+          "name": "Get User by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/users/1",
+              "host": ["{{base_url}}"],
+              "path": ["users", "1"]
+            }
+          }
+        },
+        {
+          "name": "Update User",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Juan Actualizado\",\n  \"email\": \"juan.nuevo@example.com\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/users/1",
+              "host": ["{{base_url}}"],
+              "path": ["users", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete User",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/users/1",
+              "host": ["{{base_url}}"],
+              "path": ["users", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Increase Rates",
+      "item": [
+        {
+          "name": "Create Increase Rate",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Inflación Mensual\",\n  \"rate\": 5.5,\n  \"date\": \"2025-01-01\",\n  \"frequency\": \"monthly\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/increase-rates",
+              "host": ["{{base_url}}"],
+              "path": ["increase-rates"]
+            }
+          }
+        },
+        {
+          "name": "Get All Increase Rates",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/increase-rates",
+              "host": ["{{base_url}}"],
+              "path": ["increase-rates"]
+            }
+          }
+        },
+        {
+          "name": "Get Increase Rate by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/increase-rates/1",
+              "host": ["{{base_url}}"],
+              "path": ["increase-rates", "1"]
+            }
+          }
+        },
+        {
+          "name": "Update Increase Rate",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Inflación Actualizada\",\n  \"rate\": 6.0\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/increase-rates/1",
+              "host": ["{{base_url}}"],
+              "path": ["increase-rates", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete Increase Rate",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/increase-rates/1",
+              "host": ["{{base_url}}"],
+              "path": ["increase-rates", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Wallets",
+      "item": [
+        {
+          "name": "Create Wallet",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"balance\": 1000.00,\n  \"prev_balance\": 800.00,\n  \"user_id\": 1\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/wallets",
+              "host": ["{{base_url}}"],
+              "path": ["wallets"]
+            }
+          }
+        },
+        {
+          "name": "Get All Wallets",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/wallets",
+              "host": ["{{base_url}}"],
+              "path": ["wallets"]
+            }
+          }
+        },
+        {
+          "name": "Get Wallet by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/wallets/1",
+              "host": ["{{base_url}}"],
+              "path": ["wallets", "1"]
+            }
+          }
+        },
+        {
+          "name": "Update Wallet",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"balance\": 1500.00,\n  \"prev_balance\": 1000.00\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/wallets/1",
+              "host": ["{{base_url}}"],
+              "path": ["wallets", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete Wallet",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/wallets/1",
+              "host": ["{{base_url}}"],
+              "path": ["wallets", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Accounts",
+      "item": [
+        {
+          "name": "Create Account",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Cuenta Corriente\",\n  \"type\": \"checking\",\n  \"balance\": 5000.00,\n  \"wallet_id\": 1\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/accounts",
+              "host": ["{{base_url}}"],
+              "path": ["accounts"]
+            }
+          }
+        },
+        {
+          "name": "Get All Accounts",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/accounts",
+              "host": ["{{base_url}}"],
+              "path": ["accounts"]
+            }
+          }
+        },
+        {
+          "name": "Get Account by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/accounts/1",
+              "host": ["{{base_url}}"],
+              "path": ["accounts", "1"]
+            }
+          }
+        },
+        {
+          "name": "Update Account",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Cuenta Ahorro\",\n  \"balance\": 6000.00\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/accounts/1",
+              "host": ["{{base_url}}"],
+              "path": ["accounts", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete Account",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/accounts/1",
+              "host": ["{{base_url}}"],
+              "path": ["accounts", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Cards",
+      "item": [
+        {
+          "name": "Create Card",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Visa Gold\",\n  \"card_number\": \"4532-1234-5678-9010\",\n  \"inst_recargo\": 15.5,\n  \"is_payed\": false,\n  \"wallet_id\": 1\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/cards",
+              "host": ["{{base_url}}"],
+              "path": ["cards"]
+            }
+          }
+        },
+        {
+          "name": "Get All Cards",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/cards",
+              "host": ["{{base_url}}"],
+              "path": ["cards"]
+            }
+          }
+        },
+        {
+          "name": "Get Card by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/cards/1",
+              "host": ["{{base_url}}"],
+              "path": ["cards", "1"]
+            }
+          }
+        },
+        {
+          "name": "Update Card",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Visa Platinum\",\n  \"is_payed\": true\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/cards/1",
+              "host": ["{{base_url}}"],
+              "path": ["cards", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete Card",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/cards/1",
+              "host": ["{{base_url}}"],
+              "path": ["cards", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Gastos",
+      "item": [
+        {
+          "name": "Create Gasto",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Compra Supermercado\",\n  \"type\": \"food\",\n  \"total_amount\": 250.00,\n  \"payment_end_date\": \"2025-02-01\",\n  \"payment_method_id\": 1,\n  \"user_id\": 1\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/gastos",
+              "host": ["{{base_url}}"],
+              "path": ["gastos"]
+            }
+          }
+        },
+        {
+          "name": "Get All Gastos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/gastos",
+              "host": ["{{base_url}}"],
+              "path": ["gastos"]
+            }
+          }
+        },
+        {
+          "name": "Get Gasto by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/gastos/1",
+              "host": ["{{base_url}}"],
+              "path": ["gastos", "1"]
+            }
+          }
+        },
+        {
+          "name": "Update Gasto",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Compra Actualizada\",\n  \"total_amount\": 300.00\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/gastos/1",
+              "host": ["{{base_url}}"],
+              "path": ["gastos", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete Gasto",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/gastos/1",
+              "host": ["{{base_url}}"],
+              "path": ["gastos", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Payment Methods",
+      "item": [
+        {
+          "name": "Create Payment Method",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Tarjeta Crédito\",\n  \"type\": \"credit_card\",\n  \"installments\": 12,\n  \"installment_amount\": 100.00,\n  \"card_id\": 1,\n  \"gasto_id\": 1,\n  \"account_id\": null\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/payment-methods",
+              "host": ["{{base_url}}"],
+              "path": ["payment-methods"]
+            }
+          }
+        },
+        {
+          "name": "Get All Payment Methods",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/payment-methods",
+              "host": ["{{base_url}}"],
+              "path": ["payment-methods"]
+            }
+          }
+        },
+        {
+          "name": "Get Payment Method by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/payment-methods/1",
+              "host": ["{{base_url}}"],
+              "path": ["payment-methods", "1"]
+            }
+          }
+        },
+        {
+          "name": "Update Payment Method",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"installments\": 6,\n  \"installment_amount\": 200.00\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/payment-methods/1",
+              "host": ["{{base_url}}"],
+              "path": ["payment-methods", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete Payment Method",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/payment-methods/1",
+              "host": ["{{base_url}}"],
+              "path": ["payment-methods", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Revenues",
+      "item": [
+        {
+          "name": "Create Revenue",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Salario Mensual\",\n  \"type\": \"salary\",\n  \"amount\": 5000.00,\n  \"date\": \"2025-01-01\",\n  \"user_id\": 1,\n  \"increase_rate\": 5.0\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/revenues",
+              "host": ["{{base_url}}"],
+              "path": ["revenues"]
+            }
+          }
+        },
+        {
+          "name": "Get All Revenues",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/revenues",
+              "host": ["{{base_url}}"],
+              "path": ["revenues"]
+            }
+          }
+        },
+        {
+          "name": "Get Revenue by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/revenues/1",
+              "host": ["{{base_url}}"],
+              "path": ["revenues", "1"]
+            }
+          }
+        },
+        {
+          "name": "Update Revenue",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": 5500.00,\n  \"increase_rate\": 6.0\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/revenues/1",
+              "host": ["{{base_url}}"],
+              "path": ["revenues", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete Revenue",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/revenues/1",
+              "host": ["{{base_url}}"],
+              "path": ["revenues", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Subscriptions",
+      "item": [
+        {
+          "name": "Create Subscription",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Netflix Premium\",\n  \"type\": \"streaming\",\n  \"monthly_cost\": 15.99,\n  \"date\": \"2025-01-01\",\n  \"increase_rate_id\": 1,\n  \"user_id\": 1\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/subscriptions",
+              "host": ["{{base_url}}"],
+              "path": ["subscriptions"]
+            }
+          }
+        },
+        {
+          "name": "Get All Subscriptions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/subscriptions",
+              "host": ["{{base_url}}"],
+              "path": ["subscriptions"]
+            }
+          }
+        },
+        {
+          "name": "Get Subscription by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/subscriptions/1",
+              "host": ["{{base_url}}"],
+              "path": ["subscriptions", "1"]
+            }
+          }
+        },
+        {
+          "name": "Update Subscription",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"monthly_cost\": 17.99,\n  \"type\": \"entertainment\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/subscriptions/1",
+              "host": ["{{base_url}}"],
+              "path": ["subscriptions", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete Subscription",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/subscriptions/1",
+              "host": ["{{base_url}}"],
+              "path": ["subscriptions", "1"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
