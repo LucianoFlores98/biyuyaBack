@@ -3,7 +3,6 @@ export default interface IIncreaseRate {
   name: string;
   type: string;
   rate: number;
-  date: Date;
   period: string;
   createdAt: Date;
   updatedAt: Date;

@@ -199,7 +199,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"IPC Noviembre 2024\",\n  \"type\": \"IPC\",\n  \"rate\": 2.5,\n  \"date\": \"2024-11-01\",\n  \"period\": \"2024-11\"\n}"
+              "raw": "{\n  \"name\": \"IPC Noviembre 2024\",\n  \"type\": \"IPC\",\n  \"rate\": 2.5,\n  \"period\": \"2024-11\"\n}"
             },
             "url": {
               "raw": "{{base_url}}/increase-rates",

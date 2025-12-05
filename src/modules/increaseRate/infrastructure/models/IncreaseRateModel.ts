@@ -21,10 +21,6 @@ const IncreaseRateModel = sequelize.define("IncreaseRates", {
     type: DataTypes.DECIMAL(10, 2),
     allowNull: false,
   },
-  date: {
-    type: DataTypes.DATE,
-    allowNull: false,
-  },
   period: {
     type: DataTypes.STRING,
     allowNull: true,
