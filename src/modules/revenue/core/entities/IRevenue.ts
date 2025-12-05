@@ -1,11 +1,11 @@
 export default interface IRevenue {
-  id: string;
+  id: number;
   name: string;
   type: string;
   amount: number;
-  date: Date;
-  user_id: string;
-  increase_rate: number;
+  period: string;
+  increase_frequency: number;
+  user_id: number;
   createdAt: Date;
   updatedAt: Date;
 }

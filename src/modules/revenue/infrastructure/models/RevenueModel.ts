@@ -21,9 +21,13 @@ const RevenueModel = sequelize.define("Revenues", {
     type: DataTypes.DECIMAL(10, 2),
     allowNull: false,
   },
-  date: {
-    type: DataTypes.DATE,
-    allowNull: false,
+  period: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
+  increase_frequency: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
   },
   user_id: {
     type: DataTypes.INTEGER,
@@ -32,11 +36,6 @@ const RevenueModel = sequelize.define("Revenues", {
       model: UserModel,
       key: "id",
     },
-  },
-  increase_rate: {
-    type: DataTypes.DECIMAL(10, 2),
-    allowNull: false,
-    defaultValue: 0,
   },
   createdAt: {
     allowNull: false,

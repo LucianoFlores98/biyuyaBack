@@ -7,7 +7,5 @@ export interface IRevenueRepository {
   getAll: (query: unknown) => Promise<unknown>;
   getOne: (query: unknown) => Promise<unknown>;
   getById: (id: string) => Promise<unknown>;
-  findSalariesByUserId: (userId: string) => Promise<IRevenue[]>;
-  updateSalaryAmount: (id: string, newAmount: number, newDate: Date) => Promise<IRevenue>;
 }
 

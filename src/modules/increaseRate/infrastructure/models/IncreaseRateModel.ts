@@ -12,6 +12,11 @@ const IncreaseRateModel = sequelize.define("IncreaseRates", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  type: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    defaultValue: 'SUBSCRIPTION',
+  },
   rate: {
     type: DataTypes.DECIMAL(10, 2),
     allowNull: false,
@@ -20,9 +25,9 @@ const IncreaseRateModel = sequelize.define("IncreaseRates", {
     type: DataTypes.DATE,
     allowNull: false,
   },
-  frequency: {
+  period: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   createdAt: {
     allowNull: false,

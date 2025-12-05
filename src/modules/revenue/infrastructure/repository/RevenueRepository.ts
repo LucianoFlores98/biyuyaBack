@@ -1,7 +1,5 @@
 import { IRevenueRepository } from "../../core/repository/IRevenueRepository";
 import RevenueModel from "../models/RevenueModel";
-import { Op } from "sequelize";
-import IRevenue from "../../core/entities/IRevenue";
 
 export const RevenueRepository = (): IRevenueRepository => ({
   async save(revenue) {
@@ -47,28 +45,4 @@ export const RevenueRepository = (): IRevenueRepository => ({
     });
     return revenueFounded?.dataValues;
   },
-  async findSalariesByUserId(userId: string) {
-    const salaries = await RevenueModel.findAll({
-      where: {
-        user_id: userId,
-        type: "SALARY",
-      },
-    });
-    return salaries.map((s) => s.dataValues as IRevenue);
-  },
-  async updateSalaryAmount(id: string, newAmount: number, newDate: Date) {
-    await RevenueModel.update(
-      {
-        amount: newAmount,
-        date: newDate,
-        updatedAt: new Date(),
-      },
-      {
-        where: { id },
-      }
-    );
-    const updated = await RevenueModel.findByPk(id);
-    return updated?.dataValues as IRevenue;
-  },
 });
-

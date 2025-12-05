@@ -7,7 +7,5 @@ export interface IIncreaseRateRepository {
   getAll: (query: unknown) => Promise<unknown>;
   getOne: (query: unknown) => Promise<unknown>;
   getById: (id: string) => Promise<unknown>;
-  findByPeriods: (periods: string[]) => Promise<IIncreaseRate[]>;
-  findByPeriod: (period: string) => Promise<IIncreaseRate | null>;
 }
 

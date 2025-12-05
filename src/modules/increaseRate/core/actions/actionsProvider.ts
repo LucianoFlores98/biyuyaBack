@@ -5,8 +5,6 @@ import { IGetOneIncreaseRateAction, GetOneIncreaseRateAction } from "./GetOneInc
 import { GetIncreaseRateByIdAction, IGetIncreaseRateByIdAction } from "./GetIncreaseRateByIdAction";
 import { IRemoveIncreaseRateAction, RemoveIncreaseRateAction } from "./RemoveIncreaseRateAction";
 import { ISaveIncreaseRateAction, SaveIncreaseRateAction } from "./SaveIncreaseRateAction";
-import { RegisterIPCAction, IRegisterIPCAction } from "./RegisterIPCAction";
-import { GetIPCHistoryAction, IGetIPCHistoryAction } from "./GetIPCHistoryAction";
 
 export interface IIncreaseRateActions {
   save: ISaveIncreaseRateAction;
@@ -15,8 +13,6 @@ export interface IIncreaseRateActions {
   getAll: IGetAllIncreaseRatesAction;
   getById: IGetIncreaseRateByIdAction;
   getOne: IGetOneIncreaseRateAction;
-  registerIPC: IRegisterIPCAction;
-  getIPCHistory: IGetIPCHistoryAction;
 }
 
 export const getIncreaseRateActions = (
@@ -29,8 +25,7 @@ export const getIncreaseRateActions = (
     getAll: GetAllIncreaseRatesAction(IncreaseRateRepository),
     getById: GetIncreaseRateByIdAction(IncreaseRateRepository),
     getOne: GetOneIncreaseRateAction(IncreaseRateRepository),
-    registerIPC: RegisterIPCAction(IncreaseRateRepository),
-    getIPCHistory: GetIPCHistoryAction(IncreaseRateRepository),
   };
   return IncreaseRateActions;
 };
+

@@ -64,8 +64,12 @@
             },
             "url": {
               "raw": "{{base_url}}/login",
-              "host": ["{{base_url}}"],
-              "path": ["login"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "login"
+              ]
             }
           }
         }
@@ -93,8 +97,12 @@
             },
             "url": {
               "raw": "{{base_url}}/users",
-              "host": ["{{base_url}}"],
-              "path": ["users"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "users"
+              ]
             }
           }
         },
@@ -105,8 +113,12 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/users",
-              "host": ["{{base_url}}"],
-              "path": ["users"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "users"
+              ]
             }
           }
         },
@@ -117,8 +129,13 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/users/1",
-              "host": ["{{base_url}}"],
-              "path": ["users", "1"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "users",
+                "1"
+              ]
             }
           }
         },
@@ -138,8 +155,13 @@
             },
             "url": {
               "raw": "{{base_url}}/users/1",
-              "host": ["{{base_url}}"],
-              "path": ["users", "1"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "users",
+                "1"
+              ]
             }
           }
         },
@@ -150,8 +172,13 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/users/1",
-              "host": ["{{base_url}}"],
-              "path": ["users", "1"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "users",
+                "1"
+              ]
             }
           }
         }
@@ -176,8 +203,12 @@
             },
             "url": {
               "raw": "{{base_url}}/increase-rates",
-              "host": ["{{base_url}}"],
-              "path": ["increase-rates"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "increase-rates"
+              ]
             }
           }
         },
@@ -188,8 +219,12 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/increase-rates",
-              "host": ["{{base_url}}"],
-              "path": ["increase-rates"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "increase-rates"
+              ]
             }
           }
         },
@@ -200,8 +235,13 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/increase-rates/1",
-              "host": ["{{base_url}}"],
-              "path": ["increase-rates", "1"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "increase-rates",
+                "1"
+              ]
             }
           }
         },
@@ -221,8 +261,13 @@
             },
             "url": {
               "raw": "{{base_url}}/increase-rates/1",
-              "host": ["{{base_url}}"],
-              "path": ["increase-rates", "1"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "increase-rates",
+                "1"
+              ]
             }
           }
         },
@@ -233,9 +278,91 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/increase-rates/1",
-              "host": ["{{base_url}}"],
-              "path": ["increase-rates", "1"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "increase-rates",
+                "1"
+              ]
             }
+          }
+        },
+        {
+          "name": "Register IPC",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"period\": \"2024-11\",\n  \"rate\": 2.5\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/increase-rates/ipc",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "increase-rates",
+                "ipc"
+              ]
+            },
+            "description": "Registra o actualiza datos de IPC para un período específico (formato YYYY-MM)"
+          }
+        },
+        {
+          "name": "Get IPC History",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/increase-rates/ipc/history?start=2024-11&end=2025-02",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "increase-rates",
+                "ipc",
+                "history"
+              ],
+              "query": [
+                {
+                  "key": "start",
+                  "value": "2024-11",
+                  "description": "Período inicial (YYYY-MM)"
+                },
+                {
+                  "key": "end",
+                  "value": "2025-02",
+                  "description": "Período final (YYYY-MM)"
+                }
+              ]
+            },
+            "description": "Obtiene el historial de IPC para un rango de fechas"
+          }
+        },
+        {
+          "name": "Get Latest IPC",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/increase-rates/ipc/latest",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "increase-rates",
+                "ipc",
+                "latest"
+              ]
+            },
+            "description": "Obtiene el IPC más reciente registrado"
           }
         }
       ]
@@ -259,8 +386,12 @@
             },
             "url": {
               "raw": "{{base_url}}/wallets",
-              "host": ["{{base_url}}"],
-              "path": ["wallets"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "wallets"
+              ]
             }
           }
         },
@@ -271,8 +402,12 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/wallets",
-              "host": ["{{base_url}}"],
-              "path": ["wallets"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "wallets"
+              ]
             }
           }
         },
@@ -283,8 +418,13 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/wallets/1",
-              "host": ["{{base_url}}"],
-              "path": ["wallets", "1"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "wallets",
+                "1"
+              ]
             }
           }
         },
@@ -304,8 +444,13 @@
             },
             "url": {
               "raw": "{{base_url}}/wallets/1",
-              "host": ["{{base_url}}"],
-              "path": ["wallets", "1"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "wallets",
+                "1"
+              ]
             }
           }
         },
@@ -316,8 +461,13 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/wallets/1",
-              "host": ["{{base_url}}"],
-              "path": ["wallets", "1"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "wallets",
+                "1"
+              ]
             }
           }
         }
@@ -342,8 +492,12 @@
             },
             "url": {
               "raw": "{{base_url}}/accounts",
-              "host": ["{{base_url}}"],
-              "path": ["accounts"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "accounts"
+              ]
             }
           }
         },
@@ -354,8 +508,12 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/accounts",
-              "host": ["{{base_url}}"],
-              "path": ["accounts"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "accounts"
+              ]
             }
           }
         },
@@ -366,8 +524,13 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/accounts/1",
-              "host": ["{{base_url}}"],
-              "path": ["accounts", "1"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "accounts",
+                "1"
+              ]
             }
           }
         },
@@ -387,8 +550,13 @@
             },
             "url": {
               "raw": "{{base_url}}/accounts/1",
-              "host": ["{{base_url}}"],
-              "path": ["accounts", "1"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "accounts",
+                "1"
+              ]
             }
           }
         },
@@ -399,8 +567,13 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/accounts/1",
-              "host": ["{{base_url}}"],
-              "path": ["accounts", "1"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "accounts",
+                "1"
+              ]
             }
           }
         }
@@ -425,8 +598,12 @@
             },
             "url": {
               "raw": "{{base_url}}/cards",
-              "host": ["{{base_url}}"],
-              "path": ["cards"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "cards"
+              ]
             }
           }
         },
@@ -437,8 +614,12 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/cards",
-              "host": ["{{base_url}}"],
-              "path": ["cards"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "cards"
+              ]
             }
           }
         },
@@ -449,8 +630,13 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/cards/1",
-              "host": ["{{base_url}}"],
-              "path": ["cards", "1"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "cards",
+                "1"
+              ]
             }
           }
         },
@@ -470,8 +656,13 @@
             },
             "url": {
               "raw": "{{base_url}}/cards/1",
-              "host": ["{{base_url}}"],
-              "path": ["cards", "1"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "cards",
+                "1"
+              ]
             }
           }
         },
@@ -482,8 +673,13 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/cards/1",
-              "host": ["{{base_url}}"],
-              "path": ["cards", "1"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "cards",
+                "1"
+              ]
             }
           }
         }
@@ -508,8 +704,12 @@
             },
             "url": {
               "raw": "{{base_url}}/gastos",
-              "host": ["{{base_url}}"],
-              "path": ["gastos"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "gastos"
+              ]
             }
           }
         },
@@ -520,8 +720,12 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/gastos",
-              "host": ["{{base_url}}"],
-              "path": ["gastos"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "gastos"
+              ]
             }
           }
         },
@@ -532,8 +736,13 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/gastos/1",
-              "host": ["{{base_url}}"],
-              "path": ["gastos", "1"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "gastos",
+                "1"
+              ]
             }
           }
         },
@@ -553,8 +762,13 @@
             },
             "url": {
               "raw": "{{base_url}}/gastos/1",
-              "host": ["{{base_url}}"],
-              "path": ["gastos", "1"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "gastos",
+                "1"
+              ]
             }
           }
         },
@@ -565,8 +779,13 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/gastos/1",
-              "host": ["{{base_url}}"],
-              "path": ["gastos", "1"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "gastos",
+                "1"
+              ]
             }
           }
         }
@@ -591,8 +810,12 @@
             },
             "url": {
               "raw": "{{base_url}}/payment-methods",
-              "host": ["{{base_url}}"],
-              "path": ["payment-methods"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "payment-methods"
+              ]
             }
           }
         },
@@ -603,8 +826,12 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/payment-methods",
-              "host": ["{{base_url}}"],
-              "path": ["payment-methods"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "payment-methods"
+              ]
             }
           }
         },
@@ -615,8 +842,13 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/payment-methods/1",
-              "host": ["{{base_url}}"],
-              "path": ["payment-methods", "1"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "payment-methods",
+                "1"
+              ]
             }
           }
         },
@@ -636,8 +868,13 @@
             },
             "url": {
               "raw": "{{base_url}}/payment-methods/1",
-              "host": ["{{base_url}}"],
-              "path": ["payment-methods", "1"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "payment-methods",
+                "1"
+              ]
             }
           }
         },
@@ -648,8 +885,13 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/payment-methods/1",
-              "host": ["{{base_url}}"],
-              "path": ["payment-methods", "1"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "payment-methods",
+                "1"
+              ]
             }
           }
         }
@@ -670,13 +912,18 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"Salario Mensual\",\n  \"type\": \"salary\",\n  \"amount\": 5000.00,\n  \"date\": \"2025-01-01\",\n  \"user_id\": 1,\n  \"increase_rate\": 5.0\n}"
+              "raw": "{\n  \"name\": \"Sueldo Mensual - Empresa XYZ\",\n  \"type\": \"SALARY\",\n  \"amount\": 100000,\n  \"increase_rate\": 3,\n  \"date\": \"2024-11-01\",\n  \"user_id\": 1\n}"
             },
             "url": {
               "raw": "{{base_url}}/revenues",
-              "host": ["{{base_url}}"],
-              "path": ["revenues"]
-            }
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "revenues"
+              ]
+            },
+            "description": "Crea un ingreso. Para salarios, usar type='SALARY' e increase_rate como frecuencia en meses (1=mensual, 3=trimestral, 6=semestral, 12=anual)"
           }
         },
         {
@@ -686,8 +933,12 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/revenues",
-              "host": ["{{base_url}}"],
-              "path": ["revenues"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "revenues"
+              ]
             }
           }
         },
@@ -698,8 +949,13 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/revenues/1",
-              "host": ["{{base_url}}"],
-              "path": ["revenues", "1"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "revenues",
+                "1"
+              ]
             }
           }
         },
@@ -719,8 +975,13 @@
             },
             "url": {
               "raw": "{{base_url}}/revenues/1",
-              "host": ["{{base_url}}"],
-              "path": ["revenues", "1"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "revenues",
+                "1"
+              ]
             }
           }
         },
@@ -731,9 +992,89 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/revenues/1",
-              "host": ["{{base_url}}"],
-              "path": ["revenues", "1"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "revenues",
+                "1"
+              ]
             }
+          }
+        },
+        {
+          "name": "Calculate Salary Increase",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/revenues/salary/1/calculate-increase",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "revenues",
+                "salary",
+                "1",
+                "calculate-increase"
+              ]
+            },
+            "description": "Calcula el aumento salarial basado en los datos de IPC acumulados según la frecuencia configurada"
+          }
+        },
+        {
+          "name": "Apply Salary Increase",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"newSalary\": 106152.25\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/revenues/salary/1/apply-increase",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "revenues",
+                "salary",
+                "1",
+                "apply-increase"
+              ]
+            },
+            "description": "Aplica el aumento salarial calculado, actualizando el monto y la fecha"
+          }
+        },
+        {
+          "name": "Get Pending Salary Increases",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/revenues/salary/pending-increases?userId=1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "revenues",
+                "salary",
+                "pending-increases"
+              ],
+              "query": [
+                {
+                  "key": "userId",
+                  "value": "1",
+                  "description": "ID del usuario"
+                }
+              ]
+            },
+            "description": "Obtiene todos los salarios que tienen aumentos pendientes según su frecuencia configurada"
           }
         }
       ]
@@ -757,8 +1098,12 @@
             },
             "url": {
               "raw": "{{base_url}}/subscriptions",
-              "host": ["{{base_url}}"],
-              "path": ["subscriptions"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "subscriptions"
+              ]
             }
           }
         },
@@ -769,8 +1114,12 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/subscriptions",
-              "host": ["{{base_url}}"],
-              "path": ["subscriptions"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "subscriptions"
+              ]
             }
           }
         },
@@ -781,8 +1130,13 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/subscriptions/1",
-              "host": ["{{base_url}}"],
-              "path": ["subscriptions", "1"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "subscriptions",
+                "1"
+              ]
             }
           }
         },
@@ -802,8 +1156,13 @@
             },
             "url": {
               "raw": "{{base_url}}/subscriptions/1",
-              "host": ["{{base_url}}"],
-              "path": ["subscriptions", "1"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "subscriptions",
+                "1"
+              ]
             }
           }
         },
@@ -814,8 +1173,13 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/subscriptions/1",
-              "host": ["{{base_url}}"],
-              "path": ["subscriptions", "1"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "subscriptions",
+                "1"
+              ]
             }
           }
         }

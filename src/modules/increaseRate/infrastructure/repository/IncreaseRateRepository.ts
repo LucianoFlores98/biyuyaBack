@@ -1,7 +1,5 @@
 import { IIncreaseRateRepository } from "../../core/repository/IIncreaseRateRepository";
 import IncreaseRateModel from "../models/IncreaseRateModel";
-import { Op } from "sequelize";
-import IIncreaseRate from "../../core/entities/IIncreaseRate";
 
 export const IncreaseRateRepository = (): IIncreaseRateRepository => ({
   async save(increaseRate) {
@@ -46,25 +44,6 @@ export const IncreaseRateRepository = (): IIncreaseRateRepository => ({
       },
     });
     return increaseRateFounded?.dataValues;
-  },
-  async findByPeriods(periods: string[]) {
-    const rates = await IncreaseRateModel.findAll({
-      where: {
-        frequency: {
-          [Op.in]: periods,
-        },
-      },
-      order: [["date", "ASC"]],
-    });
-    return rates.map((r) => r.dataValues as IIncreaseRate);
-  },
-  async findByPeriod(period: string) {
-    const rate = await IncreaseRateModel.findOne({
-      where: {
-        frequency: period,
-      },
-    });
-    return rate ? (rate.dataValues as IIncreaseRate) : null;
   },
 });
 
