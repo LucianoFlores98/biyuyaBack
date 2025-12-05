@@ -3,6 +3,7 @@ import { ErrorResponse, SuccessResponse } from "../../../../helpers/api";
 import { createHashMap } from "../../../../helpers/utils";
 import { IRevenueActions } from "../../core/actions/actionsProvider";
 import { InvalidIdException } from "../../core/exceptions/InvalidIdException";
+import { InvalidFieldException } from "../../core/exceptions/InvalidFieldException";
 import { RevenueNotExistException } from "../../core/exceptions/RevenueNotExistException";
 
 const name = "Ingreso";
@@ -21,6 +22,8 @@ export const RevenueControllers = ({
       [RevenueNotExistException.name]: (res: Response, error: Error) =>
         ErrorResponse(res, error, 404),
       [InvalidIdException.name]: (res: Response, error: Error) =>
+        ErrorResponse(res, error, 400),
+      [InvalidFieldException.name]: (res: Response, error: Error) =>
         ErrorResponse(res, error, 400),
     },
     (res: Response, error: Error) => ErrorResponse(res, error)

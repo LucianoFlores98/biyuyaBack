@@ -4,6 +4,7 @@ import { createHashMap } from "../../../../helpers/utils";
 import { ICardActions } from "../../core/actions/actionsProvider";
 import { InvalidIdException } from "../../core/exceptions/InvalidIdException";
 import { CardNotExistException } from "../../core/exceptions/CardNotExistException";
+import { InvalidFieldException } from "../../core/exceptions/InvalidFieldException";
 
 const name = "Tarjeta";
 const pronoun = "a";
@@ -21,6 +22,8 @@ export const CardControllers = ({
       [CardNotExistException.name]: (res: Response, error: Error) =>
         ErrorResponse(res, error, 404),
       [InvalidIdException.name]: (res: Response, error: Error) =>
+      [InvalidFieldException.name]: (res: Response, error: Error) =>
+        ErrorResponse(res, error, 400),
         ErrorResponse(res, error, 400),
     },
     (res: Response, error: Error) => ErrorResponse(res, error)

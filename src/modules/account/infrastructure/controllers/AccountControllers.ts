@@ -4,6 +4,7 @@ import { createHashMap } from "../../../../helpers/utils";
 import { IAccountActions } from "../../core/actions/actionsProvider";
 import { InvalidIdException } from "../../core/exceptions/InvalidIdException";
 import { AccountNotExistException } from "../../core/exceptions/AccountNotExistException";
+import { InvalidFieldException } from "../../core/exceptions/InvalidFieldException";
 
 const name = "Cuenta";
 const pronoun = "a";
@@ -21,6 +22,8 @@ export const AccountControllers = ({
       [AccountNotExistException.name]: (res: Response, error: Error) =>
         ErrorResponse(res, error, 404),
       [InvalidIdException.name]: (res: Response, error: Error) =>
+      [InvalidFieldException.name]: (res: Response, error: Error) =>
+        ErrorResponse(res, error, 400),
         ErrorResponse(res, error, 400),
     },
     (res: Response, error: Error) => ErrorResponse(res, error)

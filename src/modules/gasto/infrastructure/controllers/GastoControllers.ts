@@ -4,6 +4,7 @@ import { createHashMap } from "../../../../helpers/utils";
 import { IGastoActions } from "../../core/actions/actionsProvider";
 import { InvalidIdException } from "../../core/exceptions/InvalidIdException";
 import { GastoNotExistException } from "../../core/exceptions/GastoNotExistException";
+import { InvalidFieldException } from "../../core/exceptions/InvalidFieldException";
 
 const name = "Gasto";
 const pronoun = "o";
@@ -21,6 +22,8 @@ export const GastoControllers = ({
       [GastoNotExistException.name]: (res: Response, error: Error) =>
         ErrorResponse(res, error, 404),
       [InvalidIdException.name]: (res: Response, error: Error) =>
+      [InvalidFieldException.name]: (res: Response, error: Error) =>
+        ErrorResponse(res, error, 400),
         ErrorResponse(res, error, 400),
     },
     (res: Response, error: Error) => ErrorResponse(res, error)

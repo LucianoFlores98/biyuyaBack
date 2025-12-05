@@ -4,6 +4,7 @@ import { createHashMap } from "../../../../helpers/utils";
 import { ISubscriptionActions } from "../../core/actions/actionsProvider";
 import { InvalidIdException } from "../../core/exceptions/InvalidIdException";
 import { SubscriptionNotExistException } from "../../core/exceptions/SubscriptionNotExistException";
+import { InvalidFieldException } from "../../core/exceptions/InvalidFieldException";
 
 const name = "Suscripción";
 const pronoun = "a";
@@ -21,6 +22,8 @@ export const SubscriptionControllers = ({
       [SubscriptionNotExistException.name]: (res: Response, error: Error) =>
         ErrorResponse(res, error, 404),
       [InvalidIdException.name]: (res: Response, error: Error) =>
+      [InvalidFieldException.name]: (res: Response, error: Error) =>
+        ErrorResponse(res, error, 400),
         ErrorResponse(res, error, 400),
     },
     (res: Response, error: Error) => ErrorResponse(res, error)

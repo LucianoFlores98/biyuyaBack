@@ -4,6 +4,7 @@ import { createHashMap } from "../../../../helpers/utils";
 import { IUserActions } from "../../core/actions/actionsProvider";
 import { InvalidIdException } from "../../core/exceptions/InvalidIdException";
 import { UserNotActiveException } from "../../core/exceptions/UserNotActiveException";
+import { InvalidFieldException } from "../../core/exceptions/InvalidFieldException";
 import { UserNotExistException } from "../../core/exceptions/UserNotExistException";
 import { WrongEmailException } from "../../core/exceptions/WrongEmailException";
 const name = "Usuario";
@@ -28,6 +29,8 @@ export const UserControllers = ({
       [WrongEmailException.name]: (res: Response, error: Error) =>
         ErrorResponse(res, error, 401),
       [InvalidIdException.name]: (res: Response, error: Error) =>
+      [InvalidFieldException.name]: (res: Response, error: Error) =>
+        ErrorResponse(res, error, 400),
         ErrorResponse(res, error, 400),
     },
     (res: Response, error: Error) => ErrorResponse(res, error)

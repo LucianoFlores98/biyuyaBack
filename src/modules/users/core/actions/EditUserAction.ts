@@ -1,30 +1,38 @@
 import IUser from "../entities/IUser";
 import { UserNotExistException } from "../exceptions/UserNotExistException";
+import { InvalidFieldException } from "../exceptions/InvalidFieldException";
 import { IUserRepository } from "../repository/IUserRepository";
-import { IHashService } from "../services/IHashService";
 
 export interface IEditUserAction {
-  execute: (body: IUser, id: string) => Promise<unknown>;
+  execute: (body: Partial<IUser>, id: string) => Promise<unknown>;
 }
+
 export const EditUserAction = (
-  UserRepository: IUserRepository,
-  hashService: IHashService
+  UserRepository: IUserRepository
 ): IEditUserAction => {
+  const allowedFields = ['name', 'email', 'password', 'role', 'status'];
+
   return {
     execute(body, id) {
       return new Promise(async (resolve, reject) => {
-
         try {
-          const { password } = body;
-          if (password) {
-            body.password = hashService.hash(password);
-          }
           const user = await UserRepository.getById(id);
           if (!user) throw new UserNotExistException();
-          // if (!isObjectIdOrHexString(id)) throw new InvalidIdException();
+
+          const bodyKeys = Object.keys(body);
+          const invalidFields = bodyKeys.filter(key => !allowedFields.includes(key));
+
+          if (invalidFields.length > 0) {
+            throw new InvalidFieldException(invalidFields);
+          }
+
+          if (bodyKeys.length === 0) {
+            resolve(user);
+            return;
+          }
+
           await UserRepository.edit(body, id);
           const result = await UserRepository.getById(id);
-          
           resolve(result);
         } catch (error) {
           reject(error);
