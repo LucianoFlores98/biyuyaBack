@@ -22,8 +22,8 @@ export const GastoControllers = ({
       [GastoNotExistException.name]: (res: Response, error: Error) =>
         ErrorResponse(res, error, 404),
       [InvalidIdException.name]: (res: Response, error: Error) =>
-      [InvalidFieldException.name]: (res: Response, error: Error) =>
         ErrorResponse(res, error, 400),
+      [InvalidFieldException.name]: (res: Response, error: Error) =>
         ErrorResponse(res, error, 400),
     },
     (res: Response, error: Error) => ErrorResponse(res, error)
