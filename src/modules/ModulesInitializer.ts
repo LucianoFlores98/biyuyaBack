@@ -8,6 +8,7 @@ import { GastoModuleInitializer } from "./gasto/gastoModule"
 import { PaymentMethodModuleInitializer } from "./paymentMethod/paymentMethodModule"
 import { RevenueModuleInitializer } from "./revenue/revenueModule"
 import { SubscriptionModuleInitializer } from "./subscription/subscriptionModule"
+import { AnalyticsModuleInitializer } from "./analytics/analyticsModule"
 
 // Aca debemos registrar todos los modulos que hayamos creado
 const ModulesInitializer = (dependencyManager: DependencyManager) => {
@@ -20,5 +21,6 @@ const ModulesInitializer = (dependencyManager: DependencyManager) => {
     PaymentMethodModuleInitializer(dependencyManager)
     RevenueModuleInitializer(dependencyManager)
     SubscriptionModuleInitializer(dependencyManager)
+    AnalyticsModuleInitializer(dependencyManager)
 }
 export default ModulesInitializer

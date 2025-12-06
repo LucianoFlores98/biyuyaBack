@@ -1033,6 +1033,42 @@
           }
         }
       ]
+    },
+    {
+      "name": "Analytics",
+      "item": [
+        {
+          "name": "Get Salary Projection",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/analytics/salary-projection/1?months=12&mode=cumulative",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "analytics",
+                "salary-projection",
+                "1"
+              ],
+              "query": [
+                {
+                  "key": "months",
+                  "value": "12",
+                  "description": "Cantidad de meses a proyectar (1-60)"
+                },
+                {
+                  "key": "mode",
+                  "value": "cumulative",
+                  "description": "Modo de cálculo: 'cumulative' (acumulativo) o 'simple' (independiente)"
+                }
+              ]
+            },
+            "description": "Proyecta el salario mes a mes aplicando aumentos por IPC.\n\n**Modos de cálculo:**\n- `cumulative`: Cada aumento se aplica sobre el salario ya aumentado (efecto compuesto)\n- `simple`: Cada aumento se aplica sobre el salario base original\n\n**Ejemplo cumulative:**\n- Mes 1: $100,000\n- Mes 4: $102,500 (+2.5%)\n- Mes 7: $105,063 (+2.5% sobre $102,500)\n\n**Ejemplo simple:**\n- Mes 1: $100,000\n- Mes 4: $102,500 (+2.5%)\n- Mes 7: $102,500 (+2.5% sobre $100,000)"
+          }
+        }
+      ]
     }
   ]
 }
