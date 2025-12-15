@@ -30,7 +30,6 @@ export class ProjectionService {
     months: number = 12,
     mode: IPCCalculationMode = 'cumulative'
   ): Promise<SalaryProjectionResult> {
-    // 1. Obtener el revenue
     const revenue: any = await this.revenueRepository.getById(revenueId);
     if (!revenue) {
       throw new Error('Revenue no encontrado');
@@ -43,8 +42,8 @@ export class ProjectionService {
     // 2. Obtener IPCs disponibles (tipo IPC)
     const allIncreaseRates: any = await this.increaseRateRepository.getAll({});
     const ipcs = allIncreaseRates.filter((ir: any) => ir.type === 'IPC');
+    console.log('IPCs disponibles:', ipcs.map((i: any) => ({ period: i.period, rate: i.rate })));
 
-    // 3. Calcular proyecciones
     const proyecciones = this.calculateMonthlyProjections(
       revenue,
       ipcs,
@@ -52,12 +51,10 @@ export class ProjectionService {
       mode
     );
 
-    // 4. Calcular salario inicial neto
     const salarioInicialNeto = this.salaryCalculator.calculateNetSalary(
       revenue.amount
     );
 
-    // 5. Calcular resumen
     const ultimaProyeccion = proyecciones[proyecciones.length - 1];
     const incrementoTotalMonto = ultimaProyeccion.salarioBruto - revenue.amount;
     const incrementoTotalPorcentaje =
@@ -83,9 +80,6 @@ export class ProjectionService {
     };
   }
 
-  /**
-   * Calcula las proyecciones mensuales
-   */
   private calculateMonthlyProjections(
     revenue: IRevenue,
     ipcs: IIncreaseRate[],
@@ -102,16 +96,36 @@ export class ProjectionService {
       let incrementoAplicado = 0;
 
       // Verificar si corresponde aumento (no en el mes 0)
+      // Verificar si corresponde aumento (no en el mes 0)
       if (i > 0 && i % revenue.increase_frequency === 0) {
-        const ipc = this.getIPCForPeriod(ipcs, month);
+        // Calcular IPC acumulado del período anterior
+        let ipcPeriodo = 0;
 
-        if (ipc) {
-          incrementoAplicado = ipc.rate;
-          ipcAcumulado += ipc.rate;
+        console.log(`Calculando aumento para mes ${month} (índice ${i})`);
+
+        // Recorrer los meses del período anterior (ej: si frecuencia es 3, mirar los 3 meses previos)
+        for (let j = 1; j <= revenue.increase_frequency; j++) {
+          const prevMonthIndex = i - j;
+          const prevMonth = this.addMonths(revenue.period, prevMonthIndex);
+          const ipc = this.getIPCForPeriod(ipcs, prevMonth);
+
+          console.log(`  Buscando IPC para ${prevMonth}: ${ipc ? ipc.rate : 'No encontrado'}`);
+
+          if (ipc) {
+            // Sumar al acumulado (asegurando que sea número)
+            ipcPeriodo += parseFloat(ipc.rate as any);
+          }
+        }
+
+        console.log(`  IPC Periodo Total: ${ipcPeriodo}`);
+
+        if (ipcPeriodo > 0) {
+          incrementoAplicado = ipcPeriodo;
+          ipcAcumulado += ipcPeriodo;
 
           if (mode === 'cumulative') {
             // Modo acumulativo: aplica sobre el salario actual
-            currentSalary = currentSalary * (1 + ipc.rate / 100);
+            currentSalary = currentSalary * (1 + ipcPeriodo / 100);
           } else {
             // Modo simple: aplica sobre el salario base
             currentSalary = baseSalary * (1 + ipcAcumulado / 100);
